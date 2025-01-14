@@ -18,7 +18,7 @@ async function startMindAR() {
 
   loader.load(modelPath, (gltf) => {
     model = gltf.scene;
-    model.scale.set(0.1, 0.1, 0.1);
+    model.scale.set(0.5, 0.5, 0.5);
   });
 
   const anchor = mindAR.addAnchor(0);
