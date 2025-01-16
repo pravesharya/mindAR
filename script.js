@@ -47,15 +47,15 @@ btnRL.addEventListener("click", () => {
   model.rotate.y -= 0.5;
 });
 btnRR.addEventListener("click", () => {
-    model.rotate.y += 0.5;
+  model.rotate.y += 0.5;
 });
 btnSI.addEventListener("click", () => {
-  model.scale.x += 0.5;
-  model.scale.y += 0.5;
-  model.scale.z += 0.5;
+  model.scale.x += 0.1;
+  model.scale.y += 0.1;
+  model.scale.z += 0.1;
 });
 btnSO.addEventListener("click", () => {
-    model.scale.x -= 0.5;
-    model.scale.y -= 0.5;
-    model.scale.z -= 0.5;
+  model.scale.x -= 0.1;
+  model.scale.y -= 0.1;
+  model.scale.z -= 0.1;
 });

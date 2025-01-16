@@ -63,3 +63,5 @@ btnSO.addEventListener("click", () => {
     model.scale.y -= 0.5;
     model.scale.z -= 0.5;
 });
+
+// eof
