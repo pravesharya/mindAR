@@ -16,6 +16,8 @@
     </script>
     <style>
       body {
+        width: 100vw;
+        height: 100vh;
         margin: 0;
         overflow: hidden;
         width: 100vw;
@@ -24,9 +26,37 @@
         justify-content: center;
         align-items: center;
       }
+      #controls {
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        z-index: 999;
+      }
+      .control {
+        width: 32px;
+        height: 32px;
+        padding: 4px;
+        border: none;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #000;
+        font-size: 16px;
+      }
     </style>
   </head>
   <body>
+    <div id="controls">
+      <button class="control" id="debug" onclick="alert('Debug clicked')">DB</button>
+      <button class="control" id="rL">RL</button>
+      <button class="control" id="rR">RR</button>
+      <button class="control" id="zI">Z+</button>
+      <button class="control" id="zO">Z-</button>
+    </div>
     <script src="script.js" type="module"></script>
   </body>
 </html>

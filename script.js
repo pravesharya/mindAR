@@ -2,6 +2,11 @@ import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 import { MindARThree } from "mindAR";
 
+const btnRL = document.getElementById("rL");
+const btnRR = document.getElementById("rR");
+const btnZI = document.getElementById("zI");
+const btnZO = document.getElementById("zO");
+
 let model;
 const modelPath = "./assets/bunny/scene.gltf";
 const loader = new GLTFLoader();
@@ -33,3 +38,16 @@ async function startMindAR() {
   });
 }
 startMindAR();
+
+btnRL.addEventListener("click", () => {
+  console.log("Rotate Left");
+});
+btnRR.addEventListener("click", () => {
+  console.log("Rotate Right");
+});
+btnZI.addEventListener("click", () => {
+  console.log("Zoom In");
+});
+btnZO.addEventListener("click", () => {
+  console.log("Zoom Out");
+});
