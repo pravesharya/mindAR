@@ -22,7 +22,7 @@ async function startMindAR() {
     model = gltf.scene;
     model.scale.set(0.25, 0.25, 0.25);
     model.position.set(0, 0, -1);
-    model.rotation.set(90, 0, 0);
+    // model.rotation.set(90, 0, 0);
     anchor.group.add(model);
   });
 
