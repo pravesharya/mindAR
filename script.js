@@ -7,10 +7,12 @@ const btnRR = document.querySelector("#rR");
 const btnSI = document.querySelector("#sI");
 const btnSO = document.querySelector("#sO");
 
-let model;
-const modelPath = "./assets/bunny/scene.gltf";
-const loader = new GLTFLoader();
+const modelPath = "./assets/cat_walking/scene.gltf";
+const audioPath = "./assets/cat_walking/meow.mp3";
+const loaderGltf = new GLTFLoader();
+const loaderAudio = new THREE.AudioLoader();
 
+let model, animations, mixer, audio, listener;
 async function startMindAR() {
   const mindAR = new MindARThree({
     container: document.body,
@@ -23,17 +25,45 @@ async function startMindAR() {
   scene.add(light);
 
   // Wait for model to load
-  await new Promise((resolve) => {
-    loader.load(modelPath, (gltf) => {
-      model = gltf.scene;
-      resolve();
+  const gltf = await new Promise((resolve) => {
+    loaderGltf.load(modelPath, (gltf) => {
+      resolve(gltf);
+    });
+  });
+  model = gltf.scene;
+  animations = gltf.animations;
+
+  let size = 0.0025;
+  model.scale.set(size, size, size);
+  model.position.set(0, -0.5, 0);
+  anchor.group.add(model);
+
+  mixer = new THREE.AnimationMixer(model);
+  const action = mixer.clipAction(animations[0]);
+  action.play();
+
+  const audioClip = await new Promise((resolve) => {
+    loaderAudio.load(audioPath, (buffer) => {
+      resolve(buffer);
     });
   });
 
-  // Now we can safely work with the model
-  model.scale.set(0.25, 0.25, 0.25);
-  model.position.set(0, 0, -1);
-  anchor.group.add(model);
+  listener = new THREE.AudioListener();
+  camera.add(listener);
+  audio = new THREE.PositionalAudio(listener);
+  audio.setBuffer(audioClip);
+  audio.setRefDistance(100);
+  // audio.setLoop(true);
+  
+  anchor.onTargetFound = () => {
+    setInterval(() => {
+      audio.isPlaying ? audio.pause() : audio.play();
+    }, 5000);
+    // audio.play();
+  } 
+  anchor.onTargetLost = () => {
+    audio.pause();
+  } 
 
   await mindAR.start();
 
