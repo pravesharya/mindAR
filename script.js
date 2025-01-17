@@ -44,10 +44,10 @@ async function startMindAR() {
 startMindAR();
 
 btnRL.addEventListener("click", () => {
-  model.rotate.y -= 0.5;
+  model.rotation.y -= 0.5;
 });
 btnRR.addEventListener("click", () => {
-  model.rotate.y += 0.5;
+  model.rotation.y += 0.5;
 });
 btnSI.addEventListener("click", () => {
   model.scale.x += 0.1;
