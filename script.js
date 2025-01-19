@@ -2,13 +2,14 @@ import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 import { MindARThree } from "mindAR";
 
+const canvas = document.querySelector("#canvas");
 const btnRL = document.querySelector("#rL");
 const btnRR = document.querySelector("#rR");
 const btnSI = document.querySelector("#sI");
 const btnSO = document.querySelector("#sO");
 
-// const modelPath = "./assets/cat_walking/scene.gltf";
 const modelPath = "./assets/woman_dancing.glb";
+// const modelPath = "./assets/cat_walking/scene.gltf";
 // const audioPath = "./assets/cat_walking/meow.mp3";
 const loaderGltf = new GLTFLoader();
 // const loaderAudio = new THREE.AudioLoader();
@@ -16,7 +17,7 @@ const loaderGltf = new GLTFLoader();
 let model, animations, mixer, audio, listener;
 async function startMindAR() {
   const mindAR = new MindARThree({
-    container: document.body,
+    container: canvas,
     imageTargetSrc: "./assets/targetNutri.mind",
   });
   const anchor = mindAR.addAnchor(0);
