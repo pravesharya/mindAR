@@ -2,7 +2,7 @@ import * as THREE from "three";
 import { GLTFLoader } from "GLTFLoader";
 import { MindARThree } from "mindAR";
 
-const canvas = document.querySelector("#canvas");
+// const canvas = document.querySelector("#canvas");
 const btnRL = document.querySelector("#rL");
 const btnRR = document.querySelector("#rR");
 const btnSI = document.querySelector("#sI");
@@ -17,7 +17,7 @@ const loaderGltf = new GLTFLoader();
 let model, animations, mixer, audio, listener;
 async function startMindAR() {
   const mindAR = new MindARThree({
-    container: canvas,
+    container: document.body,
     imageTargetSrc: "./assets/targetNutri.mind",
   });
   const anchor = mindAR.addAnchor(0);
