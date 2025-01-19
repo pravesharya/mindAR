@@ -34,7 +34,7 @@ async function startMindAR() {
   model = gltf.scene;
   animations = gltf.animations;
 
-  let size = 0.0025;
+  let size = 0.5;
   model.scale.set(size, size, size);
   model.position.set(0, -size, 0);
   anchor.group.add(model);
