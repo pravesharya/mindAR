@@ -42,3 +42,8 @@ test03/assets/targetNutri.mind
 test03/assets/bunny/license.txt
 test03/assets/bunny/scene.bin
 test03/assets/bunny/scene.gltf
+test00/assets/woman_01/glb_scene.glb
+test00/assets/woman_01/license.txt
+test00/assets/woman_01/scene.bin
+test00/assets/woman_01/scene.gltf
+test00/assets/woman_01/textures/Milton_baseColor.png
