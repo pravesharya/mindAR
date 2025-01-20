@@ -39,7 +39,7 @@ async function startMindAR() {
 
   let size = 0.5;
   model.scale.set(size, size, size);
-  model.position.set(0, 0, -size);
+  model.position.set(0, -size *2, -size);
   model.castShadow = true;
   anchor.group.add(model);
 
