@@ -8,11 +8,11 @@ const btnRR = document.querySelector("#rR");
 const btnSI = document.querySelector("#sI");
 const btnSO = document.querySelector("#sO");
 
-const modelPath = "./assets/woman_dancing.glb";
-// const modelPath = "./assets/cat_walking/scene.gltf";
-// const audioPath = "./assets/cat_walking/meow.mp3";
+// const modelPath = "./assets/woman_dancing.glb";
+const modelPath = "./assets/cat_walking/scene.gltf";
 const loaderGltf = new GLTFLoader();
-// const loaderAudio = new THREE.AudioLoader();
+const audioPath = "./assets/cat_walking/meow.mp3";
+const loaderAudio = new THREE.AudioLoader();
 
 let model, animations, mixer, audio, listener;
 async function startMindAR() {
@@ -47,28 +47,28 @@ async function startMindAR() {
   const action = mixer.clipAction(animations[0]);
   action.play();
 
-  // const audioClip = await new Promise((resolve) => {
-  //   loaderAudio.load(audioPath, (buffer) => {
-  //     resolve(buffer);
-  //   });
-  // });
+  const audioClip = await new Promise((resolve) => {
+    loaderAudio.load(audioPath, (buffer) => {
+      resolve(buffer);
+    });
+  });
 
-  // listener = new THREE.AudioListener();
-  // camera.add(listener);
-  // audio = new THREE.PositionalAudio(listener);
-  // audio.setBuffer(audioClip);
-  // audio.setRefDistance(100);
-  // // audio.setLoop(true);
+  listener = new THREE.AudioListener();
+  camera.add(listener);
+  audio = new THREE.PositionalAudio(listener);
+  audio.setBuffer(audioClip);
+  audio.setRefDistance(100);
+  // audio.setLoop(true);
   
-  // anchor.onTargetFound = () => {
-  //   setInterval(() => {
-  //     audio.isPlaying ? audio.pause() : audio.play();
-  //   }, 5000);
-  //   // audio.play();
-  // } 
-  // anchor.onTargetLost = () => {
-  //   audio.pause();
-  // } 
+  anchor.onTargetFound = () => {
+    setInterval(() => {
+      audio.isPlaying ? audio.pause() : audio.play();
+    }, 5000);
+    // audio.play();
+  } 
+  anchor.onTargetLost = () => {
+    audio.pause();
+  } 
 
   await mindAR.start();
 
